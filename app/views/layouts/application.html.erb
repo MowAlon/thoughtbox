@@ -8,6 +8,19 @@
 </head>
 <body>
 
+  <header class="navbar navbar-fixed-top">
+    <div class="container">
+      <%= link_to "ThoughtBox", '/', id: 'logo' %>
+      <nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Log in", login_path %></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+
+<%= flash.notice %>
 <%= yield %>
 
 </body>
