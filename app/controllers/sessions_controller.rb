@@ -13,10 +13,10 @@ class SessionsController < ApplicationController
     user = User.find_by(name:  user_params[:name])
     # require 'pry'; binding.pry
     if user && user.authenticate(user_params[:password])
-      session[:user_id] = user.id
+      login(user)
       redirect_to root_path
     else
-      flash.notice = "Invalid credentials. Try again, poser."
+      flash.notice = user.errors.full_messages.join(', ')
       redirect_to login_path
     end
 

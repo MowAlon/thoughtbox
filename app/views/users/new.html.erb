@@ -1,0 +1,10 @@
+<h1>Signup</h1>
+
+<div>
+  <%= form_for(:user, url: signup_path) do |f| %>
+    <%= f.text_field :name, placeholder: 'username', class: 'form-control' %>
+    <%= f.password_field :password, placeholder: 'password', class: 'form-control' %>
+    <%= f.password_field :password_confirmation, placeholder: 'confirm password', class: 'form-control' %>
+    <%= f.submit 'Signup', class: 'btn btn-primary' %>
+  <% end %>
+</div>

@@ -3,7 +3,7 @@
 <div>
   <%= form_for(:user, url: login_path) do |f| %>
     <%= f.text_field :name, placeholder: 'username', class: 'form-control' %>
-    <%= f.text_field :password, placeholder: 'password', class: 'form-control' %>
+    <%= f.password_field :password, placeholder: 'password', class: 'form-control' %>
     <%= f.submit 'Login', class: 'btn btn-primary' %>
   <% end %>
 </div>
