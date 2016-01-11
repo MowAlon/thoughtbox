@@ -4,6 +4,14 @@ class Link < ActiveRecord::Base
 
   before_validation :insert_http_prefix
 
+  def read_button
+    if read
+      {label: 'Mark as Unread', class: 'btn-info'}
+    else
+      {label: 'Mark as Read', class: 'btn-danger'}
+    end
+  end
+
   private
 
     def insert_http_prefix

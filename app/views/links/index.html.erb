@@ -14,7 +14,6 @@
   <% @links.each do |link| %>
     <hr>
     <h2>Link #<%= link.id %>: <%= link.title %></h2>
-    <h3><%= link_to link.url %></h3>
-    <h3><%= link.read %></h3>
+    <h3><%= link_to link.url %> <%= link_to link.read_button[:label], link, method: :patch, class: "btn #{link.read_button[:class]}" %></h3>
   <% end %>
 </div>

@@ -1,7 +1,7 @@
 class LinksController < ApplicationController
 
   def index
-    @links = current_user.links
+    @links = current_user.links.sort
     @user_id = session[:user_id]
   end
 
@@ -14,6 +14,12 @@ class LinksController < ApplicationController
       flash.notice = "Couldn't add that because " + link.errors.full_messages.join(', ')
       redirect_to links_path
     end
+  end
+
+  def update
+    link = Link.find_by(id: params[:id])
+    link.update(read: !link.read)
+    redirect_to links_path
   end
 
   private
