@@ -1,0 +1,20 @@
+<h1 class='text-center'>Your Links</h1>
+
+<div>
+  <h2>Add a new link</h2>
+  <%= form_for(:link, url: links_path) do |f| %>
+    <%= f.text_field :title, placeholder: 'Title', class: 'form-control' %>
+    <%= f.text_field :url, placeholder: 'URL', class: 'form-control' %>
+    <%= f.hidden_field :user_id, value: @user_id %>
+    <%= f.submit 'Add to your list', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+<div>
+  <% @links.each do |link| %>
+    <hr>
+    <h2>Link #<%= link.id %>: <%= link.title %></h2>
+    <h3><%= link_to link.url %></h3>
+    <h3><%= link.read %></h3>
+  <% end %>
+</div>

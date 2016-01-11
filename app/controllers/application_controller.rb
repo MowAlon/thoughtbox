@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   def verify_user
     if !current_user
+      flash.notice = "Do me a favor. Log in before you do anything else."
       redirect_to login_path
     end
   end
