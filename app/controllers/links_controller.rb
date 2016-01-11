@@ -16,9 +16,18 @@ class LinksController < ApplicationController
     end
   end
 
+  def edit
+    @link = Link.find_by(id: params[:id])
+  end
+
   def update
     link = Link.find_by(id: params[:id])
-    link.update(read: !link.read)
+    if params[:update_what] == "read_status"
+      link.update(read: !link.read)
+    elsif params[:link][:update_what] == "content"
+      link.update(link_params)
+    end
+    flash.notice = "Couldn't complete that edit because " + link.errors.full_messages.join(', ')
     redirect_to links_path
   end
 

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
-  resources :links, only: [:index, :create, :update]
+  resources :links, only: [:index, :create, :edit, :update]
 
 
   # Example of regular route:

@@ -13,7 +13,7 @@
 <div>
   <% @links.each do |link| %>
     <hr>
-    <h2>Link #<%= link.id %>: <%= link.title %></h2>
-    <h3><%= link_to link.url %> <%= link_to link.read_button[:label], link, method: :patch, class: "btn #{link.read_button[:class]}" %></h3>
+    <h2>Link #<%= link.id %>: <%= link.title %> <%= link_to "Edit", edit_link_path(link), class: 'btn btn-success' %></h2>
+    <h3><%= link_to link.url %> <%= link_to link.read_button[:label], link_path(id: link.id, update_what: :read_status), method: :patch, class: "btn #{link.read_button[:class]}" %></h3>
   <% end %>
 </div>

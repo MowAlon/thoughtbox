@@ -1,0 +1,10 @@
+<h1 class='text-center'>Edit Your Link</h1>
+
+<div>
+  <%= form_for(:link, url: @link, method: :patch) do |f| %>
+    <%= f.text_field :title, placeholder: @link.title, class: 'form-control' %>
+    <%= f.text_field :url, placeholder: @link.url, class: 'form-control' %>
+    <%= f.hidden_field :update_what, value: :content %>
+    <%= f.submit 'Edit link', class: 'btn btn-primary' %>
+  <% end %>
+</div>
