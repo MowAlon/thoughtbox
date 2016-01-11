@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
   before(:each) do
-    @user = User.create(name: 'Example',
+    @user = User.create(email: 'example@example.com',
                       password: 'password', password_confirmation: 'password')
   end
 
@@ -10,27 +10,26 @@ RSpec.describe User, type: :model do
     expect(@user).to be_valid
   end
 
-  context "name" do
+  context "email" do
     it "should not be blank" do
-      @user.name = ""
+      @user.email = ""
       expect(@user).to be_invalid
     end
 
-    it "should be 32 characters or less" do
-      @user.name = "12345678901234567890123456789012"
+    it "should be 255 characters or less" do
+      @user.email = "example@example.com".rjust(255, 'x')
       expect(@user).to be_valid
-      @user.name = "123456789012345678901234567890123"
+      @user.email = "example@example.com".rjust(256, 'x')
       expect(@user).to be_invalid
     end
 
-    it "should not allow two users with the same name" do
+    it "should not allow two users with the same email" do
       user_count = User.count
-      user2 = User.create(name: 'Example',
+      user2 = User.create(email: @user.email,
       password: 'password', password_confirmation: 'password')
 
       expect(User.count).to eq(user_count)
-      expect(user2.errors.full_messages).to include("Name has already been taken")
-
+      expect(user2.errors.full_messages).to include("Email has already been taken")
     end
   end
 
