@@ -22,7 +22,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-
+    flash.notice = "Successfully logged out. See ya next time!" if session.clear
+    redirect_to login_path
   end
 
   private
