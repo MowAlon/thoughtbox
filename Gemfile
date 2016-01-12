@@ -12,6 +12,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bootstrap-sass'
 gem 'bcrypt'
 gem 'validate_url'
+gem 'responders'
+
 
 group :development, :test do
   gem 'pry-rails'
