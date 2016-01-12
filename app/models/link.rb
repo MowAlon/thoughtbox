@@ -12,6 +12,10 @@ class Link < ActiveRecord::Base
     end
   end
 
+  def url_class
+    read ? 'read' : 'unread'
+  end
+
   private
 
     def insert_http_prefix
