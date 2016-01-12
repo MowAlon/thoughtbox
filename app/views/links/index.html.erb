@@ -15,7 +15,6 @@
     <hr>
     <div class="link <%= link.url_class %>" id=<%= link.id %>>
       <h2>Link #<%= link.id %>: <%= link.title %> <%= link_to "Edit", edit_link_path(link), class: 'btn btn-success' %></h2>
-      <!-- <h3><%#= link_to link.url %> <%#= link_to link.read_button[:label], link_path(id: link.id, update_what: :read_status), method: :patch, class: "btn #{link.read_button[:class]}" %></h3> -->
       <h3><%= link_to link.url, link.url, class: "url" %> <button class="btn <%= link.read_button[:class] %> read-button"><%= link.read_button[:label] %></button></h3>
     </div>
   <% end %>

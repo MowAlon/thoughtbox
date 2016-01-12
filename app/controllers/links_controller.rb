@@ -11,7 +11,7 @@ class LinksController < ApplicationController
       flash.notice = "Added one more to the pile!"
       redirect_to links_path
     else
-      flash.notice = "Couldn't add that because " + link.errors.full_messages.join(', ')
+      flash.notice = "Failure! " + link.errors.full_messages.join(', ')
       redirect_to links_path
     end
   end
@@ -22,12 +22,10 @@ class LinksController < ApplicationController
 
   def update
     link = Link.find_by(id: params[:id])
-    if params[:update_what] == "read_status"
-      link.update(read: !link.read)
-    elsif params[:link][:update_what] == "content"
-      link.update(link_params)
+    link.update(link_params)
+    if !link.errors.empty?
+      flash.notice = "Failure! " + link.errors.full_messages.join(', ')
     end
-    flash.notice = "Couldn't complete that edit because " + link.errors.full_messages.join(', ')
     redirect_to links_path
   end
 
